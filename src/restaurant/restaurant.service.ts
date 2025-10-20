@@ -1,6 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
-import { Restaurant, RestaurantDocument } from './entities/restaurant.entity';
+import {
+  Restaurant,
+  RestaurantDocument,
+  RestaurantModel,
+} from './entities/restaurant.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 // import { FindNearbyDto } from './dto/find-nearby.dto';
@@ -9,7 +13,7 @@ import { Model } from 'mongoose';
 export class RestaurantService {
   constructor(
     @InjectModel(Restaurant.name)
-    private restaurantModel: Model<RestaurantDocument>,
+    private restaurantModel: Model<RestaurantDocument> & RestaurantModel,
   ) {}
   async create(
     createRestaurantDto: CreateRestaurantDto,
@@ -55,15 +59,6 @@ export class RestaurantService {
   }
 
   async findNearby(lat: number, lng: number) {
-    const radiusInMeters = 1000;
-
-    return this.restaurantModel.find({
-      location: {
-        $near: {
-          $geometry: { type: 'Point', coordinates: [lng, lat] },
-          $maxDistance: radiusInMeters,
-        },
-      },
-    });
+    return this.restaurantModel.getNearbyRestaurants(lat, lng, 1000);
   }
 }
