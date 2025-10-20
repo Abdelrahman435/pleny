@@ -1,53 +1,32 @@
 import {
+  IsArray,
+  ArrayMinSize,
   IsString,
   IsNotEmpty,
-  ArrayMinSize,
-  ArrayMaxSize,
-  IsArray,
-  IsLatitude,
-  IsLongitude,
   ValidateNested,
 } from 'class-validator';
-import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 
-class CreateLocationDto {
-  @ApiProperty({ description: 'Latitude of the restaurant location' })
-  @IsLatitude()
-  @Type(() => Number)
-  latitude: number;
+class GeoJsonLocationDto {
+  @ApiProperty({ example: 'Point' })
+  @IsString()
+  @IsNotEmpty()
+  type: string;
 
-  @ApiProperty({ description: 'Longitude of the restaurant location' })
-  @IsLongitude()
-  @Type(() => Number)
-  longitude: number;
+  @ApiProperty({ example: [31.2357, 30.0444] })
+  @IsArray()
+  @ArrayMinSize(2)
+  coordinates: number[];
 }
 
 export class CreateRestaurantDto {
-  @ApiProperty({ description: 'اسم المطعم باللغة العربية' })
-  @IsString()
-  @IsNotEmpty()
-  nameAr: string;
+  @IsString() @IsNotEmpty() nameAr: string;
+  @IsString() @IsNotEmpty() nameEn: string;
+  @IsString() @IsNotEmpty() slugName: string;
+  @IsArray() @IsString({ each: true }) cuisines: string[];
 
-  @ApiProperty({ description: 'Name of the restaurant in English' })
-  @IsString()
-  @IsNotEmpty()
-  nameEn: string;
-
-  @ApiProperty({ description: 'Slug of the restaurant' })
-  @IsString()
-  @IsNotEmpty()
-  slugName: string;
-
-  @ApiProperty({ description: 'Cuisines offered by the restaurant' })
-  @IsArray()
-  @ArrayMinSize(1)
-  @ArrayMaxSize(3)
-  @IsString({ each: true })
-  cuisines: string[];
-
-  @ApiProperty({ description: 'Location of the restaurant' })
   @ValidateNested()
-  @Type(() => CreateLocationDto)
-  location: CreateLocationDto;
+  @Type(() => GeoJsonLocationDto)
+  location: GeoJsonLocationDto;
 }

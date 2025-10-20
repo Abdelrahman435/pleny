@@ -3,6 +3,7 @@ import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { Restaurant, RestaurantDocument } from './entities/restaurant.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+// import { FindNearbyDto } from './dto/find-nearby.dto';
 
 @Injectable()
 export class RestaurantService {
@@ -13,17 +14,15 @@ export class RestaurantService {
   async create(
     createRestaurantDto: CreateRestaurantDto,
   ): Promise<RestaurantDocument> {
-    const geoJsonLocation = {
-      type: 'Point',
-      coordinates: [
-        createRestaurantDto.location.longitude,
-        createRestaurantDto.location.latitude,
-      ],
-    };
-
     const newRestaurant = new this.restaurantModel({
-      ...createRestaurantDto,
-      location: geoJsonLocation,
+      nameAr: createRestaurantDto.nameAr,
+      nameEn: createRestaurantDto.nameEn,
+      slugName: createRestaurantDto.slugName,
+      cuisines: createRestaurantDto.cuisines,
+      location: {
+        type: createRestaurantDto.location.type,
+        coordinates: createRestaurantDto.location.coordinates,
+      },
     });
 
     return newRestaurant.save();
@@ -55,5 +54,16 @@ export class RestaurantService {
     return restaurant;
   }
 
-  async findNearby() {}
+  async findNearby(lat: number, lng: number) {
+    const radiusInMeters = 1000;
+
+    return this.restaurantModel.find({
+      location: {
+        $near: {
+          $geometry: { type: 'Point', coordinates: [lng, lat] },
+          $maxDistance: radiusInMeters,
+        },
+      },
+    });
+  }
 }
