@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RestaurantModule } from './restaurant/restaurant.module';
 import { UserModule } from './user/user.module';
-import { RelationshipModule } from './relationship/relationship.module';
+import { UserRestaurantModule } from './User-Restaurant/user-restaurant-interaction.module';
 import { RecommendationModule } from './recommendation/recommendation.module';
 
 @Module({
@@ -23,7 +23,7 @@ import { RecommendationModule } from './recommendation/recommendation.module';
     }),
     RestaurantModule,
     UserModule,
-    RelationshipModule,
+    UserRestaurantModule,
     RecommendationModule,
   ],
   controllers: [AppController],
