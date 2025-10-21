@@ -25,7 +25,7 @@ Open Swagger at:
 
 bash
 Copy code
-http://localhost:3000/api
+http://localhost:4000/api
 
 🧠 Example Request
 json
