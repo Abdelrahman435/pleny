@@ -1,13 +1,13 @@
-# 🍽️ Restaurant API – Part 1
+# Restaurant API – Part 1
 
-## 📘 Overview
+##  Overview
 
 NestJS RESTful API for managing restaurant data.  
 Includes Swagger documentation for easy testing and endpoint exploration.
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 ```bash
 # Clone the repository
@@ -27,7 +27,7 @@ bash
 Copy code
 http://localhost:4000/api
 
-🧠 Example Request
+ Example Request
 json
 Copy code
 POST /restaurants
@@ -42,7 +42,7 @@ POST /restaurants
   }
 }
 
-📦 Tech Stack
+Tech Stack
 bash
 Copy code
 - NestJS
