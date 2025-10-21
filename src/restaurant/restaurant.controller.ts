@@ -13,6 +13,12 @@ export class RestaurantController {
   }
 
   @Get()
+  @ApiQuery({
+    name: 'cuisine',
+    type: String,
+    required: false,
+    description: 'Optional filter by cuisine',
+  })
   findAll(@Query('cuisine') cuisine?: string) {
     return this.restaurantService.findAll(cuisine);
   }
