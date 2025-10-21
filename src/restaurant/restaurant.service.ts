@@ -7,7 +7,6 @@ import {
 } from './entities/restaurant.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-// import { FindNearbyDto } from './dto/find-nearby.dto';
 
 @Injectable()
 export class RestaurantService {

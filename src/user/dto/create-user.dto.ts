@@ -11,8 +11,7 @@ export class CreateUserDto {
   fullName: string;
 
   @ApiProperty({
-    description:
-      'An array of the user\'s favorite cuisines (e.g., ["Asian", "Italian"]).',
+    description: "An array of the user's favorite cuisines.",
     example: ['Burgers', 'Fried'],
   })
   @IsArray()

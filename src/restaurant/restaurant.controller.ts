@@ -1,8 +1,6 @@
 import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
 import { RestaurantService } from './restaurant.service';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
-// import { RestaurantDocument } from './entities/restaurant.entity';
-// import { FindNearbyDto } from './dto/find-nearby.dto';
 import { ApiQuery } from '@nestjs/swagger';
 
 @Controller('restaurant')

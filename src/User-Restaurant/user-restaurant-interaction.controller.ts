@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Param, Delete } from '@nestjs/common';
 import { UserRestaurantService } from './user-restaurant-interaction.service';
 import { AddFollowDto } from './dto/add_interaction.dto';
 

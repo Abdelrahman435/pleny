@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "bb8fecca-45d5-4e50-ab23-6c7dd44607b1",
+		"name": "Pleny",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43810235",
+		"_collection_link": "https://speeding-spaceship-216123.postman.co/workspace/Team-Workspace~1cda253a-6747-4506-8ec3-3ee4f3e18422/collection/43810235-bb8fecca-45d5-4e50-ab23-6c7dd44607b1?action=share&source=collection_link&creator=43810235"
+	},
+	"item": [
+		{
+			"name": "Add Restaurant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nameAr\":\"كرم الشام\",\r\n    \"nameEn\":\"Karam Elsham\",\r\n    \"slugName\":\"any1\",\r\n    \"cuisines\":[\r\n        \"shawarma\"\r\n    ],\r\n    \"location\": {\r\n    \"type\": \"Point\",\r\n    \"coordinates\": [ 31.2357, 30.0444 ] \r\n}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/restaurant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"restaurant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Restaurants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/restaurant?cuisine=grills",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"restaurant"
+					],
+					"query": [
+						{
+							"key": "cuisine",
+							"value": "grills"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Restaurant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/restaurant/any2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"restaurant",
+						"any2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fullName\":\"Abdelraman Hassan\",\r\n    \"favoriteCuisines\":[\r\n        \"shawarma\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add follow",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/interaction/follow/68f6124380b3565dcbcd1993/68f66875831fde9545ba9165",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"interaction",
+						"follow",
+						"68f6124380b3565dcbcd1993",
+						"68f66875831fde9545ba9165"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recommendation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/recommendation/68f6369cfc9492bfbb5898b2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"recommendation",
+						"68f6369cfc9492bfbb5898b2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find near by",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/restaurant/nearby?lat=29.9187&lng=31.2001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"restaurant",
+						"nearby"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "29.9187"
+						},
+						{
+							"key": "lng",
+							"value": "31.2001"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,25 +1,23 @@
-// File: src/restaurant/dto/find-nearby.dto.ts
-
 import { IsLatitude, IsLongitude, IsNotEmpty } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class FindNearbyDto {
   @ApiProperty({
-    description: "User's current latitude (required for distance calculation)",
-    example: 30.0444, // Example coordinate for Cairo
+    description: 'User latitude (required for distance calculation)',
+    example: 30.0444,
   })
   @IsNotEmpty()
-  @IsLatitude() // Ensures value is a valid latitude (-90 to +90)
-  @Type(() => Number) // Converts the query string input to a number
+  @IsLatitude()
+  @Type(() => Number)
   latitude: number;
 
   @ApiProperty({
-    description: "User's current longitude (required for distance calculation)",
-    example: 31.2357, // Example coordinate for Cairo
+    description: 'User longitude (required for distance calculation)',
+    example: 31.2357,
   })
   @IsNotEmpty()
-  @IsLongitude() // Ensures value is a valid longitude (-180 to +180)
-  @Type(() => Number) // Converts the query string input to a number
+  @IsLongitude()
+  @Type(() => Number)
   longitude: number;
 }
